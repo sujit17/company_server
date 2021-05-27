@@ -2,11 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const config = require("./config");
+const cors = require("cors");
 
 const server = express();
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.json());
+server.use(cors({ origin: "http://localhost:3000" }));
 
 server.listen(config.PORT, () => {
   mongoose.set("useFindAndModify", false);
